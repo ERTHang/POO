@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/EX1/EX1.iml" filepath="$PROJECT_DIR$/ListaProva/EX1/EX1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/EX2/EX2.iml" filepath="$PROJECT_DIR$/ListaProva/EX2/EX2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/EX3/EX3.iml" filepath="$PROJECT_DIR$/ListaProva/EX3/EX3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/EX4/EX4.iml" filepath="$PROJECT_DIR$/ListaProva/EX4/EX4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/EX5/EX5.iml" filepath="$PROJECT_DIR$/ListaProva/EX5/EX5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/EX6/EX6.iml" filepath="$PROJECT_DIR$/ListaProva/EX6/EX6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/EX7/EX7.iml" filepath="$PROJECT_DIR$/ListaProva/EX7/EX7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ListaProva/ListaProva.iml" filepath="$PROJECT_DIR$/ListaProva/ListaProva.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Alunos/ProjetoAlunos/Projeto!.iml" filepath="$PROJECT_DIR$/Alunos/ProjetoAlunos/Projeto!.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Agenda/ProjetoAgenda/ProjetoAgenda.iml" filepath="$PROJECT_DIR$/Agenda/ProjetoAgenda/ProjetoAgenda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProjetoBiblioteca/ProjetoBiblioteca.iml" filepath="$PROJECT_DIR$/ProjetoBiblioteca/ProjetoBiblioteca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Empresa/ProjetoEmpresa/ProjetoEmpresa.iml" filepath="$PROJECT_DIR$/Empresa/ProjetoEmpresa/ProjetoEmpresa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpLogicas/ProjetoOpLogicas/ProjetoOpLogicas.iml" filepath="$PROJECT_DIR$/OpLogicas/ProjetoOpLogicas/ProjetoOpLogicas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LojaCarros/Revenda/Revenda.iml" filepath="$PROJECT_DIR$/LojaCarros/Revenda/Revenda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Viagem/SistemaViagem/SistemaViagem.iml" filepath="$PROJECT_DIR$/Viagem/SistemaViagem/SistemaViagem.iml" />
+    </modules>
+  </component>
+</project>
