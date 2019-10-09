@@ -1,4 +1,5 @@
 package dados;
+import negocio.*;
 
 public class Livro implements ItemDeBiblioteca{
     private String titulo;
@@ -18,7 +19,11 @@ public class Livro implements ItemDeBiblioteca{
     }
 
     public boolean empresta(){
+        if(this.estaEmprestado){
+            return false;
+        }
         this.estaEmprestado = true;
+        return true;
     }
 
     public void devolve(){

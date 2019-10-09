@@ -1,5 +1,7 @@
 package dados;
 
+import negocio.ItemDeBiblioteca;
+
 public class CD implements ItemDeBiblioteca{
     private String titulo;
     private String nomeArtista;
@@ -19,7 +21,11 @@ public class CD implements ItemDeBiblioteca{
     }
 
     public boolean empresta(){
+        if(this.estaEmprestado){
+            return false;
+        }
         this.estaEmprestado = true;
+        return true;
     }
 
     public void devolve(){
