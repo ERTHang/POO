@@ -8,12 +8,12 @@ import dados.Livro;
 import negocio.ItemDeBiblioteca;
 
 public class Biblioteca {
-    private String nome;
-    private int quantItens;
-    private Scanner in = new Scanner(System.in);
-    private ArrayList<ItemDeBiblioteca> itens = new ArrayList<ItemDeBiblioteca>();
+    private static String nome;
+    private static int quantItens;
+    private static Scanner in = new Scanner(System.in);
+    private static ArrayList<ItemDeBiblioteca> itens = new ArrayList<ItemDeBiblioteca>();
 
-    public void catalogarLivro() {
+    public static void catalogarLivro() {
         System.out.println("Titulo:");
         String titulo = in.nextLine();
         System.out.println("Localizacao:");
@@ -30,7 +30,7 @@ public class Biblioteca {
         itens.add(aux);
     }
 
-    public void catalogarCD() {
+    public static void catalogarCD() {
         System.out.println("Titulo:");
         String titulo = in.nextLine();
         System.out.println("Localizacao:");
@@ -50,48 +50,82 @@ public class Biblioteca {
         itens.add(aux);
     }
 
-    public void emprestarItem(String titulo) {
-        for(ItemDeBiblioteca item:itens){
-            if(item.titulo().equals(titulo)){
+    public static void emprestarItem(String titulo) {
+        for (ItemDeBiblioteca item : itens) {
+            if (item.titulo().equals(titulo)) {
                 item.empresta();
                 break;
             }
         }
     }
 
-    public void devolverItem(String titulo) {
-        for(ItemDeBiblioteca item:itens){
-            if(item.titulo().equals(titulo)){
+    public static void devolverItem(String titulo) {
+        for (ItemDeBiblioteca item : itens) {
+            if (item.titulo().equals(titulo)) {
                 item.devolve();
                 break;
             }
         }
     }
 
-    public void mostrarLocalizacao(String titulo) {
-        for(ItemDeBiblioteca item:itens){
-            if(item.titulo().equals(titulo)){
-                item.devolve();
+    public static void mostrarLocalizacao(String titulo) {
+        for (ItemDeBiblioteca item : itens) {
+            if (item.titulo().equals(titulo)) {
+                System.out.println(item.localizacao());
                 break;
             }
         }
     }
 
-    public void mostrarDetalhesItem(String titulo) {
-        for(ItemDeBiblioteca item:itens){
-            if(item.titulo().equals(titulo)){
-                if(item instanceof Livro){
-                    System.out.println(((Livro)item).toString());
+    public static void mostrarDetalhesItem(String titulo) {
+        for (ItemDeBiblioteca item : itens) {
+            if (item.titulo().equals(titulo)) {
+                if (item instanceof Livro) {
+                    System.out.println(((Livro) item).toString());
                 }
-                if(item instanceof CD){
-                    System.out.println(((CD)item).toString());
+                if (item instanceof CD) {
+                    System.out.println(((CD) item).toString());
                 }
             }
         }
     }
 
     public static void main(String[] args) {
+        boolean sair = false;
+        while (!sair) {
+            System.out.println(
+                    "\n\n1. cadastrar CD\n2. cadastrar Livro\n3. emprestar Item\n4. devolver Item\n5. mostrar Localizacao\n6. mostrar Detalhes\n0. Sair");
+            int opt = in.nextInt();
+            in.nextLine();
+            switch (opt) {
+            case 1:
+                catalogarCD();
+                break;
+            case 2:
+                catalogarLivro();
+                break;
+            case 3:
+                System.out.println("Titulo:");
+                emprestarItem(in.nextLine());
+                break;
+            case 4:
+                System.out.println("Titulo:");
+                devolverItem(in.nextLine());
+                break;
+            case 5:
+                System.out.println("Titulo:");
+                mostrarLocalizacao(in.nextLine());
+                break;
+            case 6:
+                System.out.println("Titulo:");
+                mostrarDetalhesItem(in.nextLine());
+                break;
 
+                default:
+                    sair = true;
+                    break;
+            }
+        }
     }
 
     public String getNome() {

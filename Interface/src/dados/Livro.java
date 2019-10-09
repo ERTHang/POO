@@ -1,7 +1,7 @@
 package dados;
 import negocio.*;
 
-public class Livro implements ItemDeBiblioteca{
+public class Livro implements ItemDeBiblioteca {
     private String titulo;
     private String autor;
     private int numeroPaginas;
