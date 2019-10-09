@@ -14,6 +14,7 @@ public class CD implements ItemDeBiblioteca{
     public CD(String titulo, String localizacao){
         this.titulo = titulo;
         this.localizacao = localizacao;
+        this.estaEmprestado = false;
     }
 
     public boolean estaEmprestado(){
@@ -98,6 +99,13 @@ public class CD implements ItemDeBiblioteca{
 
     public void setEstaEmprestado(boolean estaEmprestado) {
         this.estaEmprestado = estaEmprestado;
+    }
+
+    @Override
+    public String toString() {
+        return "CD [anoGravacao=" + anoGravacao + ", duracao=" + duracao + ", estaEmprestado=" + estaEmprestado
+                + ", localizacao=" + localizacao + ", nomeArtista=" + nomeArtista + ", numeroMusicas=" + numeroMusicas
+                + ", titulo=" + titulo + "]";
     }
 
 }

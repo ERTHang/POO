@@ -12,6 +12,7 @@ public class Livro implements ItemDeBiblioteca{
     public Livro(String titulo, String localizacao){
         this.titulo = titulo;
         this.localizacao = localizacao;
+        this.estaEmprestado = false;
     }
 
     public boolean estaEmprestado(){
@@ -88,5 +89,11 @@ public class Livro implements ItemDeBiblioteca{
 
     public void setEstaEmprestado(boolean estaEmprestado) {
         this.estaEmprestado = estaEmprestado;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro [anoEdicao=" + anoEdicao + ", autor=" + autor + ", estaEmprestado=" + estaEmprestado
+                + ", localizacao=" + localizacao + ", numeroPaginas=" + numeroPaginas + ", titulo=" + titulo + "]";
     }
 }
