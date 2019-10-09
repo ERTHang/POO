@@ -41,4 +41,52 @@ public class Livro implements ItemDeBiblioteca{
     public String titulo(){
         return this.titulo;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public int getNumeroPaginas() {
+        return numeroPaginas;
+    }
+
+    public void setNumeroPaginas(int numeroPaginas) {
+        this.numeroPaginas = numeroPaginas;
+    }
+
+    public int getAnoEdicao() {
+        return anoEdicao;
+    }
+
+    public void setAnoEdicao(int anoEdicao) {
+        this.anoEdicao = anoEdicao;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public boolean isEstaEmprestado() {
+        return estaEmprestado;
+    }
+
+    public void setEstaEmprestado(boolean estaEmprestado) {
+        this.estaEmprestado = estaEmprestado;
+    }
 }

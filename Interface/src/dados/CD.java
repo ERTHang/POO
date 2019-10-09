@@ -44,4 +44,60 @@ public class CD implements ItemDeBiblioteca{
         return this.titulo;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getNomeArtista() {
+        return nomeArtista;
+    }
+
+    public void setNomeArtista(String nomeArtista) {
+        this.nomeArtista = nomeArtista;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public int getNumeroMusicas() {
+        return numeroMusicas;
+    }
+
+    public void setNumeroMusicas(int numeroMusicas) {
+        this.numeroMusicas = numeroMusicas;
+    }
+
+    public int getAnoGravacao() {
+        return anoGravacao;
+    }
+
+    public void setAnoGravacao(int anoGravacao) {
+        this.anoGravacao = anoGravacao;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public boolean isEstaEmprestado() {
+        return estaEmprestado;
+    }
+
+    public void setEstaEmprestado(boolean estaEmprestado) {
+        this.estaEmprestado = estaEmprestado;
+    }
+
 }
