@@ -41,8 +41,14 @@ public class GerenciaPessoas {
 
     public void inserirFinalLista(Pessoa pessoa){
         if(head == null){
+            head = new Nodo();
             head.setPessoa(pessoa);
+            quantPessoas++;
+        }
+        else if(tail == null){
+            tail = new Nodo();
             tail.setPessoa(pessoa);
+            head.setProximo(tail);
             quantPessoas++;
         }
         else{
@@ -62,14 +68,15 @@ public class GerenciaPessoas {
             throw new PosicaoInvalidaException("Posição Invalida");
         }
         
-        if(pos == 0){
+        if(pos == quantPessoas){
+            inserirFinalLista(pessoa);
+        }
+        
+        else if(pos == 0){
             aux.setPessoa(pessoa);
             aux.setProximo(head);
             head = aux;
             quantPessoas++;
-        }
-        else if(pos == quantPessoas-1){
-            inserirFinalLista(pessoa);
         }
         else{
             Nodo novo = new Nodo();
@@ -125,7 +132,7 @@ public class GerenciaPessoas {
             throw new ListaVaziaException("Lista Vazia");
 
         delet = head;
-        while(delet.getProximo() != null){
+        while(delet != null){
            if(delet.getPessoa().getNome().equals(nome)){
                existe = true;
                break;
@@ -190,8 +197,8 @@ public class GerenciaPessoas {
             throw new ListaVaziaException("Lista Vazia");
 
         busca = head;
-        while(busca.getProximo() != null){
-           if(busca.getPessoa().getNome().equals(nome)){
+        while(busca != null){
+            if(busca.getPessoa().getNome().equals(nome)){
                existe = true;
                break;
             }
