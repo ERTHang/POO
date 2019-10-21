@@ -128,28 +128,4 @@ public class Biblioteca {
         }
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getQuantItens() {
-        return quantItens;
-    }
-
-    public void setQuantItens(int quantItens) {
-        this.quantItens = quantItens;
-    }
-
-    public ArrayList<ItemDeBiblioteca> getItens() {
-        return itens;
-    }
-
-    public void setItens(ArrayList<ItemDeBiblioteca> itens) {
-        this.itens = itens;
-    }
-
 }
