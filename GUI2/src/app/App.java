@@ -23,12 +23,13 @@ public class App extends JFrame {
     ButtonGroup grupo;
 
     public App() {
-        painel = new JPanel(new GridLayout(4, 1));
+        painel = new JPanel(new GridLayout(5, 1));
         painelDois = new JPanel();
         painelUm = new JPanel();
         painelBotoes = new JPanel(new GridLayout(2, 2));
         painelSaida = new JPanel(new GridLayout(2, 1));
         saida = new JLabel();
+        grupo = new ButtonGroup();
 
         // texto valor um
         textUm = new JLabel();
@@ -60,14 +61,7 @@ public class App extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
-                    float v1 = Float.parseFloat(valorUm.getText()); 
-                    float v2 = Float.parseFloat(valorDois.getText());
-                    String res = Float.toString(v1 + v2);
-                    saida.setText(res);
-                }catch(Exception e2){
-                    JOptionPane.showMessageDialog(null, "Entrada Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
-                }
+                
             }
         });
         painelBotoes.add(botaoSoma);
@@ -80,7 +74,6 @@ public class App extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                this.op = 0;
             }
         });
         grupo.add(botaoMenos);
@@ -119,8 +112,16 @@ public class App extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                switch(this.op){
-                    case 0:
+                if(botaoSoma.isSelected())
+                        try{
+                            float v1 = Float.parseFloat(valorUm.getText()); 
+                            float v2 = Float.parseFloat(valorDois.getText());
+                            String res = Float.toString(v1 + v2);
+                            saida.setText(res);
+                        }catch(Exception e2){
+                            JOptionPane.showMessageDialog(null, "Entrada Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
+                        }
+                else if(botaoMenos.isSelected())
                         try{
                             float v1 = Float.parseFloat(valorUm.getText()); 
                             float v2 = Float.parseFloat(valorDois.getText());
@@ -129,7 +130,7 @@ public class App extends JFrame {
                         }catch(Exception e2){
                             JOptionPane.showMessageDialog(null, "Entrada Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
                         }
-                    case 1:
+                else if(botaoDiv.isSelected())
                         try{
                             float v1 = Float.parseFloat(valorUm.getText()); 
                             float v2 = Float.parseFloat(valorDois.getText());
@@ -142,20 +143,7 @@ public class App extends JFrame {
                         }catch(Exception e2){
                             JOptionPane.showMessageDialog(null, "Entrada Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
                         }
-                    case 2:
-                        try{
-                            float v1 = Float.parseFloat(valorUm.getText()); 
-                            float v2 = Float.parseFloat(valorDois.getText());
-                            if(v2 == 0){
-                                JOptionPane.showMessageDialog(null, "Entrada Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
-                                return;
-                            }
-                            String res = Float.toString(v1 / v2);
-                            saida.setText(res);
-                        }catch(Exception e2){
-                            JOptionPane.showMessageDialog(null, "Entrada Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
-                        }
-                    case 3:
+                else if(botaoMul.isSelected())
                         try{
                             float v1 = Float.parseFloat(valorUm.getText()); 
                             float v2 = Float.parseFloat(valorDois.getText());
@@ -164,27 +152,26 @@ public class App extends JFrame {
                         }catch(Exception e2){
                             JOptionPane.showMessageDialog(null, "Entrada Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
                         }
-                }
             }
 
         });
-        painelBotoes.add(botaoIgual);
-
-
+        
+        
         //resultado
         textSaida = new JLabel();
         textSaida.setText("Resultado: ");
         textSaida.setFont(new Font("Arial", 1, 50));
         painelSaida.add(textSaida);
-
+        
         saida.setFont(new Font("Arial", 1, 50));
         saida.setPreferredSize(new Dimension(600, 80));
         painelSaida.add(saida);
         
-
+        
         painel.add(painelUm);
         painel.add(painelDois);
         painel.add(painelBotoes);
+        painel.add(botaoIgual);
         painel.add(painelSaida);
 
         setSize(800, 600);
