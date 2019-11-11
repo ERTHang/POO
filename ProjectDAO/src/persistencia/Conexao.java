@@ -7,11 +7,11 @@ import java.sql.SQLException;
 public class Conexao{
 	static private Connection conexao = null;
 	
-	public static Connection getConexão() {
+	public static Connection getConexao() {
 		if(conexao == null) {
 			String url = "jdbc:postgresql://localhost:5432/db";
 			String username = "postgres";
-			String password = "udesc";
+			String password = "postgres";
 			
 			try {
 				Class.forName("org.postgresql.Driver");

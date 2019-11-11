@@ -22,7 +22,7 @@ public class CidadeDAO {
 	}
 
 	private CidadeDAO() {
-		Connection conn = Conexao.getConexão();
+		Connection conn = Conexao.getConexao();
 		try {
 			insertCidade = conn.prepareStatement("insert into cidade (nome, estado) values (?, ?)");
 			deleteCidade = conn.prepareStatement("delete from cidade where id = ?");
@@ -48,7 +48,6 @@ public class CidadeDAO {
 	}
 	
 	public Cidade delete(int code) {
-		ResultSet rs;
 		try {
 			deleteCidade.setInt(1, code);
 			deleteCidade.executeUpdate();

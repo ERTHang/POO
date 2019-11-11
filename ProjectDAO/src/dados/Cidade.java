@@ -8,7 +8,6 @@ public class Cidade {
 	public int getId() {
 		return id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -27,6 +26,8 @@ public class Cidade {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public void addAeroporto(Aeroporto aux) {
 	}
 
 }
