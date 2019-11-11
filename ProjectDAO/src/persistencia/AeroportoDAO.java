@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dados.Aeroporto;
 
@@ -12,12 +13,13 @@ import dados.Aeroporto;
  */
 public class AeroportoDAO {
 
-    
+
 	private static AeroportoDAO instance = null;
 	private PreparedStatement sqldelete;
 	private PreparedStatement sqlinsert;
 	private PreparedStatement sqlselect;
 	private PreparedStatement menorid;
+    private PreparedStatement sqlall;
 
 	public static AeroportoDAO getInstance() {
 		if (instance == null) {
@@ -33,12 +35,27 @@ public class AeroportoDAO {
 			sqldelete = conn.prepareStatement("delete from aeroporto where id = ?");
 			sqlselect = conn.prepareStatement("select * from aeroporto where id = ?");
 			menorid = conn.prepareStatement("select min(id) from aeroporto");
+      		sqlall = conn.prepareStatement("select id from aeroporto");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
+
+	public ArrayList<Aeroporto> getAeroportos(){
+        ResultSet rs;
+        ArrayList<Aeroporto> aeroportos = new ArrayList<Aeroporto>();
+        try {
+            rs = sqlall.executeQuery();
+            while(rs.next()){
+                aeroportos.add(select(rs.getInt("id")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return aeroportos;
+    }
+
 	public int menorID() {
 		ResultSet rs;
 		int retorno = 1;
@@ -51,7 +68,7 @@ public class AeroportoDAO {
 		}
 		return retorno;
 	}
-	
+
 	public Aeroporto delete(int code) {
 		try {
 			sqldelete.setInt(1, code);
@@ -80,18 +97,18 @@ public class AeroportoDAO {
 		}
 		return emp;
 	}
-	
+
 	public void insert(Aeroporto aeroporto) {
 		try {
 			sqlinsert.setString(2, aeroporto.getNome());
             sqlinsert.setString(1, aeroporto.getCodigo());
             sqlinsert.setInt(3, aeroporto.getIdCidade());
 			sqlinsert.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 
 }

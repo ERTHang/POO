@@ -41,5 +41,5 @@ public class Aeroporto {
     public void setIdCidade(int idCidade) {
         this.idCidade = idCidade;
     }
-
+    
 }

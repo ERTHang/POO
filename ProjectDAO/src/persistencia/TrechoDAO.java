@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dados.Trecho;
 
@@ -17,6 +18,7 @@ public class TrechoDAO {
     private PreparedStatement sqlinsert;
     private PreparedStatement sqlselect;
     private PreparedStatement menorid;
+    private PreparedStatement sqlall;
 
     public static TrechoDAO getInstance() {
         if (instance == null) {
@@ -33,10 +35,25 @@ public class TrechoDAO {
             sqldelete = conn.prepareStatement("delete from trecho where id = ?");
             sqlselect = conn.prepareStatement("select * from trecho where id = ?");
             menorid = conn.prepareStatement("select min(id) from trecho");
+            sqlall = conn.prepareStatement("select id from trecho");
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public ArrayList<Trecho> getTrechos(){
+        ResultSet rs;
+        ArrayList<Trecho> trechos = new ArrayList<Trecho>();
+        try {
+            rs = sqlall.executeQuery();
+            while(rs.next()){
+                trechos.add(select(rs.getInt("id")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trechos;
     }
 
     public int menorID() {

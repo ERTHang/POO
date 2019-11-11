@@ -1,5 +1,7 @@
 package dados;
 
+import persistencia.ReservaDAO;
+
 /**
  * Cliente
  */
@@ -52,9 +54,16 @@ public class Cliente {
     }
 
 	public void reservarIda(Reserva reserva) {
+        ReservaDAO reservadao = ReservaDAO.getInstance();
+        reservadao.insert(reserva);
 	}
 
 	public void reservarVolta(Reserva ida, Reserva volta) {
+        ida.setIdVolta(volta.getId());
+        ReservaDAO reservadao = ReservaDAO.getInstance();
+        reservadao.insert(ida);
+        reservadao.insert(volta);
+
 	}
 
 	public void reservarTrecho(Reserva reserva, Trecho trecho) {

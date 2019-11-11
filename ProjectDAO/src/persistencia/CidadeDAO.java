@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dados.Cidade;
 
@@ -13,6 +14,7 @@ public class CidadeDAO {
 	private PreparedStatement insertCidade;
 	private PreparedStatement selectCidade;
 	private PreparedStatement menorid;
+    private PreparedStatement sqlall;
 
 	public static CidadeDAO getInstance() {
 		if (instance == null) {
@@ -28,12 +30,27 @@ public class CidadeDAO {
 			deleteCidade = conn.prepareStatement("delete from cidade where id = ?");
 			selectCidade = conn.prepareStatement("select * from cidade where id = ?");
 			menorid = conn.prepareStatement("select min(id) from cidade");
+			sqlall = conn.prepareStatement("select id from aeroporto");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
+
+	public ArrayList<Cidade> getCidades(){
+        ResultSet rs;
+        ArrayList<Cidade> cidades = new ArrayList<Cidade>();
+        try {
+            rs = sqlall.executeQuery();
+            while(rs.next()){
+                cidades.add(select(rs.getInt("id")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cidades;
+    }
+
 	public int menorID() {
 		ResultSet rs;
 		int retorno = 1;
@@ -46,7 +63,7 @@ public class CidadeDAO {
 		}
 		return retorno;
 	}
-	
+
 	public Cidade delete(int code) {
 		try {
 			deleteCidade.setInt(1, code);
@@ -74,17 +91,17 @@ public class CidadeDAO {
 		}
 		return emp;
 	}
-	
+
 	public void insert(Cidade cidade) {
 		try {
 			insertCidade.setString(1, cidade.getNome());
 			insertCidade.setString(2, cidade.getEstado());
 			insertCidade.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 
 }

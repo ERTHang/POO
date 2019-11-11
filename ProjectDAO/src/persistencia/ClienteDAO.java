@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dados.Cliente;
 
@@ -12,12 +13,13 @@ import dados.Cliente;
  */
 public class ClienteDAO {
 
-    
+
 	private static ClienteDAO instance = null;
 	private PreparedStatement sqldelete;
 	private PreparedStatement sqlinsert;
 	private PreparedStatement sqlselect;
 	private PreparedStatement menorid;
+    private PreparedStatement sqlall;
 
 	public static ClienteDAO getInstance() {
 		if (instance == null) {
@@ -33,12 +35,27 @@ public class ClienteDAO {
 			sqldelete = conn.prepareStatement("delete from cliente where id = ?");
 			sqlselect = conn.prepareStatement("select * from cliente where id = ?");
 			menorid = conn.prepareStatement("select min(id) from cliente");
+      		sqlall = conn.prepareStatement("select id from cliente");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
+
+	public ArrayList<Cliente> getClientes(){
+        ResultSet rs;
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        try {
+            rs = sqlall.executeQuery();
+            while(rs.next()){
+                clientes.add(select(rs.getInt("id")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clientes;
+    }
+
 	public int menorID() {
 		ResultSet rs;
 		int retorno = 1;
@@ -51,7 +68,7 @@ public class ClienteDAO {
 		}
 		return retorno;
 	}
-	
+
 	public Cliente delete(int code) {
 		try {
 			sqldelete.setInt(1, code);
@@ -81,7 +98,7 @@ public class ClienteDAO {
 		}
 		return emp;
 	}
-	
+
 	public void insert(Cliente cliente) {
 		try {
             sqlinsert.setString(1, cliente.getCpf());
@@ -89,11 +106,11 @@ public class ClienteDAO {
             sqlinsert.setString(3, cliente.getEndereco());
             sqlinsert.setInt(4, cliente.getTelefone());
 			sqlinsert.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 
 }

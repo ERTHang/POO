@@ -4,46 +4,47 @@ import dados.*;
 import persistencia.*;
 
 public class ReservaPassagem {
-	private ArrayList<Cidade>listaDeCidades = new ArrayList<Cidade>();
-	private ArrayList<Cliente>listaDeClientes = new ArrayList<Cliente>();
-    private ArrayList<Aeroporto>listaDeAeroportos = new ArrayList<Aeroporto>();
-    ReservaDAO reservadao = ReservaDAO.getInstance();
-	
+	private CidadeDAO cidadedao = CidadeDAO.getInstance();
+	private ClienteDAO clientedao = ClienteDAO.getInstance();
+	private AeroportoDAO aeroportodao = AeroportoDAO.getInstance();
+	private ReservaDAO reservadao = ReservaDAO.getInstance();
+
 	public void cadastrarCidade(Cidade cidade) {
-		this.listaDeCidades.add(cidade);
+		cidadedao.insert(cidade);
+		
 	}
-	
+
 	public void cadastrarCliente(Cliente cliente) {
-		this.listaDeClientes.add(cliente);
+		clientedao.insert(cliente);
 	}
-	
+
 	public void cadastrarAeroporto(Aeroporto aeroporto) {
-		this.listaDeAeroportos.add(aeroporto);
+		aeroportodao.insert(aeroporto);
 	}
-	
+
 	public void reservarIda(Cliente cliente, Reserva reserva) {
 		cliente.reservarIda(reserva);
-		listaDeClientes.add(cliente);
+		clientedao.insert(cliente);
 	}
-	
+
 	public void reservarVolta(Cliente cliente, Reserva ida, Reserva volta) {
 		cliente.reservarVolta(ida, volta);
-		listaDeClientes.add(cliente);
+		clientedao.insert(cliente);
 	}
-	
+
 	public void reservarTrecho(Cliente cliente, Reserva reserva, Trecho trecho) {
 		cliente.reservarTrecho(reserva, trecho);
-		listaDeClientes.add(cliente);
+		clientedao.insert(cliente);
 	}
-	
+
 	public void reservarPoltrona(Cliente cliente, Reserva reserva, Trecho trecho, int poltrona) {
 		cliente.reservarPoltrona(reserva, trecho, poltrona);
-		listaDeClientes.add(cliente);
+		clientedao.insert(cliente);
 	}
-	
+
 	public ArrayList<Reserva> mostrarReservas(String cpfCliente) {
         ArrayList<Reserva> aux = new ArrayList<Reserva>();
-		for(Cliente cliente:listaDeClientes) {
+		for(Cliente cliente:clientedao.getClientes()) {
 			if(cliente.getCpf() == cpfCliente) {
 				for (Reserva reserva : reservadao.getReservas()) {
                     if (reserva.getIdCliente() == cliente.getId()) {
@@ -54,22 +55,22 @@ public class ReservaPassagem {
 		}
 		return aux;
 	}
-	
+
 	public ArrayList<Reserva> mostrarReservas() {
 		return reservadao.getReservas();
 	}
 
 	public ArrayList<Cidade> getListaDeCidades() {
-		return listaDeCidades;
+		return cidadedao.getCidades();
 	}
 
 	public ArrayList<Cliente> getListaDeClientes() {
-		return listaDeClientes;
+		return clientedao.getClientes();
 	}
 
 	public ArrayList<Aeroporto> getListaDeAeroportos() {
-		return listaDeAeroportos;
+		return aeroportodao.getAeroportos();
 	}
-	
-	
+
+
 }
