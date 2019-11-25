@@ -8,6 +8,8 @@ public class Contribuinte {
     private String endereco;
     private int contaBancaria;
 
+    
+
     public String getCpf() {
         return cpf;
     }
